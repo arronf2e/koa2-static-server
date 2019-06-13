@@ -17,7 +17,7 @@
             console.log(fd, 'fd', document.getElementById('imageFile').files[0])
             axios({
                 method: 'POST',
-                url: 'http://localhost:8999/upload',
+                url: location.href + 'upload',
                 data: fd,
                 // headers: {
                 //     'Content-Type': 'multipart/form-data'
