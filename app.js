@@ -27,7 +27,7 @@ router.post('/upload', async ctx => {
         const reader = fs.createReadStream(file.path)
         const ext = file.name.split('.').pop()
         const filename = file.name.split('.').shift()
-        const uploadPath = "./static/images"
+        const uploadPath = path.resolve(__dirname, "./static/images")
         const flag = fs.existsSync(uploadPath)
         if (!flag) mkdirp.sync(uploadPath)
         const upStream = fs.createWriteStream(`${uploadPath}/${filename}.${ext}`)
