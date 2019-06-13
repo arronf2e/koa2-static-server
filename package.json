@@ -1,0 +1,28 @@
+{
+  "name": "koa2-static-server",
+  "version": "1.0.0",
+  "description": "静态资源服务器",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arronf2e/koa2-static-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arronf2e/koa2-static-server/issues"
+  },
+  "homepage": "https://github.com/arronf2e/koa2-static-server#readme",
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-body": "^4.1.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.6",
+    "mkdirp": "^0.5.1"
+  }
+}

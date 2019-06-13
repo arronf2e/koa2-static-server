@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>upload</title>
+</head>
+<body>
+    <input type="file" id="imageFile" />
+    <button id="upload">上传</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script>
+        function uploadImage() {
+            var fd = new FormData()
+            fd.append('image', document.getElementById('imageFile').files[0])
+            console.log(fd, 'fd', document.getElementById('imageFile').files[0])
+            axios({
+                method: 'POST',
+                url: 'http://localhost:8999/upload',
+                data: fd,
+                // headers: {
+                //     'Content-Type': 'multipart/form-data'
+                // },
+                // 添加上传进度
+                onUploadProgress: function(e) {
+                    console.log(e.loaded)
+                    var percentage = Math.round((e.loaded * 100) / e.total) || 0;
+                    if (percentage < 100) {
+                        console.log(percentage + '%');  // 上传进度
+                    }
+                }
+            }).then(resp => {
+                console.log(resp.data);
+            }).catch(err => console.log(err));
+        }
+        upload.addEventListener('click', uploadImage)
+    </script>
+</body>
+</html>
