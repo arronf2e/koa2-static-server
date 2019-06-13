@@ -9,6 +9,9 @@
 <body>
     <input type="file" id="imageFile" />
     <button id="upload">上传</button>
+
+
+    <p>图片链接： <span id="url"></span></p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     <script>
         function uploadImage() {
@@ -31,7 +34,7 @@
                     }
                 }
             }).then(resp => {
-                console.log(resp.data);
+                document.getElementById('url').innerHTML = resp.data.url
             }).catch(err => console.log(err));
         }
         upload.addEventListener('click', uploadImage)
