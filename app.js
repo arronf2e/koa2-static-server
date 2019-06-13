@@ -22,6 +22,7 @@ app.use(koaBody({
 
 
 router.post('/upload', async ctx => {
+    console.log(ctx.request)
     const file = ctx.request.files.image
     if(file) {
         const reader = fs.createReadStream(file.path)
@@ -32,7 +33,7 @@ router.post('/upload', async ctx => {
         if (!flag) mkdirp.sync(uploadPath)
         const upStream = fs.createWriteStream(`${uploadPath}/${filename}.${ext}`)
         await reader.pipe(upStream)
-        ctx.body = {"code": 200, "description": "成功保存图片"};
+        ctx.body = {"code": 200, "description": "成功保存图片", url: ctx.request.header.host + `/static/images/${filename}.${ext}`};
     }else {
         ctx.body = {"code": 201, "description": "没有选择图片"};
     }
